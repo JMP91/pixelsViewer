@@ -1,0 +1,10 @@
+# Build et binaires
+build/
+*.o
+*.out
+
+# Fichiers temporaires / système
+*.log
+*.swp
+.DS_Store
+
