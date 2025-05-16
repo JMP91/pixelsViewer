@@ -7,6 +7,10 @@
 typedef struct PIXELS_Context {
     int width;
     int height;
+    unsigned char a;
+    unsigned char r;
+    unsigned char g;
+    unsigned char b;
     uint32_t *pixels;
 } PIXELS_Context;
 

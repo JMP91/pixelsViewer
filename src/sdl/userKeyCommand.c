@@ -23,8 +23,8 @@ void userKeyCommand (SDL_Context *sdlContext,
                 case SDLK_e:
                     tabChoice = cropCircleNoMv;
                     break;
-                case SDLK_r:
-                    tabChoice = neige;
+                case SDLK_t:
+                    tabChoice = effect_test;
                     break;
 
                 case SDLK_SPACE:

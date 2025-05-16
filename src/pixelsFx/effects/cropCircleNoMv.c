@@ -9,10 +9,6 @@ void cropCircleNoMv (PIXELS_Context *pixelsContext) {
     unsigned short circlePosX = pixelsContext->width / 2;
     unsigned short circlePosY = pixelsContext->height / 2;
 
-    unsigned char a = 255; // ne pas toucher en BM
-    unsigned char r = 0;
-    unsigned char g = 0;
-    unsigned char b = 0;
 
     for (int y = 0; y < pixelsContext->height; y++) {
         for (int x = 0; x < pixelsContext->width; x++) {
@@ -24,16 +20,18 @@ void cropCircleNoMv (PIXELS_Context *pixelsContext) {
             int dist2 = dx*dx + dy*dy;
             int pseudoAngle = (dx + dy) ; // approximation très simple
             if (((pseudoAngle + dist2 / 15) % 40) < 20) {
-                r = 200; g = 200; b = 200;
+                pixelsContext->r = 255;
+                pixelsContext->g = 255;
+                pixelsContext->b = 255;
             } else {
-                r = 0; g = 0; b = 0;
+                pixelsContext->r = 0;
+                pixelsContext->g = 0;
+                pixelsContext->b = 0;
             }
-
-            pixelsContext->pixels[i] = ((a & 0xFF) << 24)
-                                     | ((r & 0xFF) << 16)
-                                     | ((g & 0xFF) << 8)
-                                     | (b & 0xFF);
+            pixelsContext->pixels[i] = ((pixelsContext->a & 0xFF) << 24)
+                                     | ((pixelsContext->r & 0xFF) << 16)
+                                     | ((pixelsContext->g & 0xFF) << 8)
+                                     | (pixelsContext->b & 0xFF);
         }
     }
 }
-

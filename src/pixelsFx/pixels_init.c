@@ -24,7 +24,6 @@ PIXELS_Context *pixelsContext_init(SDL_Context *sdlContext) {
 
     pixelsContext->width = windowWidth;
     pixelsContext->height = windowHeight;
-
     pixelsContext->pixels = malloc(windowWidth * windowHeight
                                                         * sizeof(uint32_t));
     if (!pixelsContext->pixels) {
@@ -32,6 +31,10 @@ PIXELS_Context *pixelsContext_init(SDL_Context *sdlContext) {
         free(pixelsContext);
         return NULL;
     }
+    pixelsContext->a = 255;
+    pixelsContext->r = 0;
+    pixelsContext->g = 0;
+    pixelsContext->b = 0;
 
     return pixelsContext;
 }
