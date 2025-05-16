@@ -5,6 +5,7 @@
 #include "sdl/userKeyCommand.h"
 #include "pixelsFx/pixels_init.h"
 #include "pixelsFx/pixelsFx.h"
+#include "pixelsFx/tabChoice.h"
 
 void userKeyCommand (SDL_Context *sdlContext, 
                      TEXTURE_Context **textureContext,
@@ -14,12 +15,20 @@ void userKeyCommand (SDL_Context *sdlContext,
         case SDL_KEYDOWN:
             switch (sdlContext->userEvent.key.keysym.sym) {
                 case SDLK_a:
+                    tabChoice = xOr;
                     break;
                 case SDLK_z:
+                    tabChoice = coCroisées;
                     break;
                 case SDLK_e:
+                    tabChoice = cropCircleNoMv;
                     break;
+                case SDLK_r:
+                    tabChoice = neige;
+                    break;
+
                 case SDLK_SPACE:
+                    tabChoice = effect_clear;
                     break;
                     case SDLK_p:
                     break;

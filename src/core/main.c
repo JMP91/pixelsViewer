@@ -6,6 +6,8 @@
 #include "pixelsFx/pixels_init.h"
 #include "pixelsFx/pixelsFx.h"
 #include "sdl/renderer.h"
+#include "pixelsFx/pixelsTabFx_Choice.h"
+#include "pixelsFx/tabChoice.h"
 
 int main(void) {
     SDL_Context *sdlContext = initSDL(800, 800);
@@ -16,8 +18,6 @@ int main(void) {
 
     PIXELS_Context *pixelsContext = pixelsContext_init(sdlContext);
     if (!pixelsContext) return -1;
-
-    effect_clear(pixelsContext); 
 
     int lastFrameDisplay = SDL_GetTicks(); 
     int currentTime = 0;
@@ -33,7 +33,7 @@ int main(void) {
 
         if (elapsedTime >= 41) {        
         SDL_RenderClear(sdlContext->renderer);
-        effect_test(pixelsContext); 
+        tabChoice(pixelsContext);
         renderTexture(textureContext, sdlContext->renderer, pixelsContext);
         SDL_RenderPresent(sdlContext->renderer);
         lastFrameDisplay = SDL_GetTicks();
