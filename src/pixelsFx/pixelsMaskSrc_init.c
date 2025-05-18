@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "sdl/sdl_init.h"
-#include "pixelsFx/pixelsMask_init.h"
+#include "pixelsFx/pixelsMaskSrc_init.h"
 
-PIXELSMASK_Context *pixelsMaskContext_init(SDL_Context *sdlContext) {
+PIXELSMASKSRC_Context *pixelsMaskSrcContext_init(SDL_Context *sdlContext) {
 
-    PIXELSMASK_Context *pixelsMaskContext = malloc(sizeof(PIXELSMASK_Context));
-    if (!pixelsMaskContext) {
-        fprintf(stderr, "Erreur allocation PIXELSMASK_Context\n");
+    PIXELSMASKSRC_Context *pixelsMaskSrcContext =
+                                        malloc(sizeof(PIXELSMASKSRC_Context));
+    if (!pixelsMaskSrcContext) {
+        fprintf(stderr, "Erreur allocation PIXELSMASKSRC_Context\n");
         return NULL;
     }
 
@@ -18,35 +19,35 @@ PIXELSMASK_Context *pixelsMaskContext_init(SDL_Context *sdlContext) {
                                         &windowWidth, &windowHeight) != 0) {
         fprintf(stderr, "Erreur SDL_GetRendererOutputSize : %s\n",
                                                             SDL_GetError());
-        free(pixelsMaskContext);
+        free(pixelsMaskSrcContext);
         return NULL;
     }
 
-    pixelsMaskContext->width = windowWidth;
-    pixelsMaskContext->height = windowHeight;
-    pixelsMaskContext->mask = malloc(windowWidth * windowHeight
+    pixelsMaskSrcContext->width = windowWidth;
+    pixelsMaskSrcContext->height = windowHeight;
+    pixelsMaskSrcContext->mask = malloc(windowWidth * windowHeight
                                                         * sizeof(Uint8));
-    if (!pixelsMaskContext->mask) {
+    if (!pixelsMaskSrcContext->mask) {
       fprintf(stderr, "Erreur : allocation du tableau mask  échouée\n");
-        free(pixelsMaskContext);
+        free(pixelsMaskSrcContext);
         return NULL;
     }
 
     for (int i = 0; i < windowWidth * windowHeight; i++) {
-        pixelsMaskContext->mask[i] = 0;
+        pixelsMaskSrcContext->mask[i] = 0;
     }
 
-    return pixelsMaskContext;
+    return pixelsMaskSrcContext;
 
 }
 
-void cleanupPixelsMask(PIXELSMASK_Context *pixelsMaskContext) {
-    if (!pixelsMaskContext) return;
+void cleanupPixelsMaskSrc(PIXELSMASKSRC_Context *pixelsMaskSrcContext) {
+    if (!pixelsMaskSrcContext) return;
 
-    if (pixelsMaskContext->mask) {
-        free(pixelsMaskContext->mask);
+    if (pixelsMaskSrcContext->mask) {
+        free(pixelsMaskSrcContext->mask);
     }
-    free(pixelsMaskContext);
+    free(pixelsMaskSrcContext);
 }
 /*
 PIXELS_Context *pixelsContext_refresh (PIXELS_Context *pixelsContext,

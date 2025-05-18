@@ -40,7 +40,7 @@ gcc -Iinclude src/*.c -o pixel_viewer `sdl2-config --cflags --libs`
 
 ## Détail technique
 
-- Un tableay 'mask' Uint8 lde la taille de la fenêtre
+- Un tableau 'mask' Uint8 lde la taille de la fenêtre
     pour les calcules puis copié dans  Un tableau `pixels[]` de type Uint32
     contient l’ensemble  des pixels de l’image à l’écran.
 - Chaque pixel est codé sur 32 bits : `0xAARRGGBB` (alpha, rouge, vert, bleu).

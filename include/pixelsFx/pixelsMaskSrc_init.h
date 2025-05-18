@@ -10,7 +10,7 @@ typedef struct PIXELSMASKSRC_Context {
 
 PIXELSMASKSRC_Context *pixelsMaskSrcContext_init(SDL_Context *sdlContext);
 
-void cleanupPixelsMaskSrc(PIXELSMASKSRC_Context *pixelsMaskSrcContext);
+void cleanupPixelsMask(PIXELSMASKSRC_Context *pixelsMaskSrcContext);
 
 PIXELSMASKSRC_Context *pixelsSrcMaskContext_refresh (
                                       PIXELSMASKSRC_Context *pixelsMaskContext,
