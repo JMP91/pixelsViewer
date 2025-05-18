@@ -8,6 +8,7 @@
 #include "sdl/renderer.h"
 #include "pixelsFx/pixelsTabFx_Choice.h"
 #include "pixelsFx/tabChoice.h"
+#include "pixelsFx/pixelsMask_init.h"
 
 int main(void) {
     SDL_Context *sdlContext = initSDL(800, 800);
@@ -18,6 +19,9 @@ int main(void) {
 
     PIXELS_Context *pixelsContext = pixelsContext_init(sdlContext);
     if (!pixelsContext) return -1;
+
+    PIXELSMASK_Context *pixelsMaskContext = pixelsMaskContext_init(sdlContext);
+    if (!pixelsMaskContext) return -1;
 
     int lastFrameDisplay = SDL_GetTicks(); 
     int currentTime = 0;
@@ -41,6 +45,8 @@ int main(void) {
 
         SDL_Delay (1);
     }
+
+    cleanupPixelsMask(pixelsMaskContext);
     cleanupPixels(pixelsContext);
     cleanupTexture(textureContext);
     cleanupSDL(sdlContext);

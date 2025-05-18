@@ -1,7 +1,5 @@
 #include "pixelsFx/pixels_init.h"
 #include "pixelsFx/pixelsFx.h"
-#include "core/utils.h"
-#include <stdio.h>
 
 void effect_test(PIXELS_Context *pixelsContext) {
     static uint32_t color = 0xffffffff;

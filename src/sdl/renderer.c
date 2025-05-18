@@ -1,4 +1,3 @@
-#include <stdint.h>
 #include "sdl/renderer.h"
 #include "sdl/texture_init.h"
 #include "pixelsFx/pixels_init.h"

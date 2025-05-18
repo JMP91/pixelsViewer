@@ -18,10 +18,10 @@ avec un **noyau minimal**.
 
 ## Philosophie
 
-- 💡 Aucun calcul lourd ou transformation complexe à ce stade.
-- 📦 Tous les pixels sont stockés et manipulés directement dans des
-                                         **tableaux de type `uint32_t`**.
-- 🖼️ SDL est utilisé uniquement comme **interface de sortie vidéo**.
+-  Tous les calcules sont stockés dans un mask et manipulés directement
+   dans des **tableaux de type `uint8 et recopié dans un tab Uint32  
+-  SDL est utilisé uniquement comme **interface de sortie vidéo**.
+   en texture stream 
 
 ---
 
@@ -40,8 +40,9 @@ gcc -Iinclude src/*.c -o pixel_viewer `sdl2-config --cflags --libs`
 
 ## Détail technique
 
-- Un tableau `pixels[]` de type `uint32_t` contient l’ensemble
-   des pixels de l’image à l’écran.
+- Un tableay 'mask' Uint8 lde la taille de la fenêtre
+    pour les calcules puis copié dans  Un tableau `pixels[]` de type Uint32
+    contient l’ensemble  des pixels de l’image à l’écran.
 - Chaque pixel est codé sur 32 bits : `0xAARRGGBB` (alpha, rouge, vert, bleu).
 - Ce tableau est transféré à une texture SDL (`SDL_Texture*`)
    à chaque frame via `SDL_UpdateTexture()`.
@@ -56,8 +57,8 @@ expérimenter des motifs visuels et des effets graphiques simples.
 ## À venir
 
 - Un effet de pixels évolutif ou animé
-- Une base pour un environnement graphique bare metal ou embarqué
-
+- Une base pour un environnement graphique embarqué noyau mini iniframes etc.
+- je ne sais pas encore ce que cela va être .webcam son on verra .
 ---
 
 ## License
