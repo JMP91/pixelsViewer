@@ -1,11 +1,12 @@
 #ifndef PIXELSMASKSRC_INIT_H
 #define PIXELSMASKSRC_INIT_H
 
+#include "sdl/sdl_init.h"
 
 typedef struct PIXELSMASKSRC_Context {
     int widthSrc;
     int heightSrc;
-    uint8_t *maskSrc;
+    Uint8 *maskSrc;
 } PIXELSMASKSRC_Context;
 
 PIXELSMASKSRC_Context *pixelsMaskSrcContext_init(SDL_Context *sdlContext);

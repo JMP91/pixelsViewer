@@ -3,9 +3,9 @@
 
 void xOr (PIXELS_Context *pixelsContext) {
 
-    for (int y = 0; y < pixelsContext->height; y++) {
-        for (int x = 0; x < pixelsContext->width; x++) {
-            int i = y * pixelsContext->width + x;
+    for (int y = 0; y < pixelsContext->pixelsHeight; y++) {
+        for (int x = 0; x < pixelsContext->pixelsWidth; x++) {
+            int i = y * pixelsContext->pixelsWidth + x;
             if ((x  ^ y ) %  19 < 15 ){
                 pixelsContext->pixels[i] = 0xFFFFFFFF;
             } else {

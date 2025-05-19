@@ -9,6 +9,7 @@
 #include "pixelsFx/pixelsTabFx_Choice.h"
 #include "pixelsFx/tabChoice.h"
 #include "pixelsFx/pixelsMaskSrc_init.h"
+#include "pixelsFx/pixelsMaskDest_init.h"
 
 int main(void) {
 
@@ -25,6 +26,10 @@ int main(void) {
                                         pixelsMaskSrcContext_init(sdlContext);
     if (!pixelsMaskSrcContext) return -1;
 
+    PIXELSMASKDEST_Context *pixelsMaskDestContext =
+                                        pixelsMaskDestContext_init(sdlContext);
+    if (!pixelsMaskDestContext) return -1;
+
     int lastFrameDisplay = SDL_GetTicks(); 
     int currentTime = 0;
     int elapsedTime = 0;    
@@ -40,7 +45,7 @@ int main(void) {
         if (elapsedTime >= 41) {        
         SDL_RenderClear(sdlContext->renderer);
       
-        tabChoice(pixelsContext);
+//        tabChoice(pixelsContext);
 
         renderTexture(textureContext, sdlContext->renderer, pixelsContext);
         SDL_RenderPresent(sdlContext->renderer);

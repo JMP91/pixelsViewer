@@ -17,8 +17,8 @@ void effect_test(PIXELS_Context *pixelsContext) {
     }
 
     // Centre de l'écran
-    int cx = pixelsContext->width / 2;
-    int cy = pixelsContext->height / 2;
+    int cx = pixelsContext->pixelsWidth / 2;
+    int cy = pixelsContext->pixelsHeight / 2;
 
     // Taille du carré (20x20 pixels)
     int squareSize = 20;
@@ -31,9 +31,9 @@ void effect_test(PIXELS_Context *pixelsContext) {
             int ny = cy + y * factor;
 
             // Vérifie que le pixel est à l’intérieur de l’écran
-            if (nx >= 0 && nx < pixelsContext->width &&
-                ny >= 0 && ny < pixelsContext->height) {
-                int index = ny * pixelsContext->width + nx;
+            if (nx >= 0 && nx < pixelsContext->pixelsWidth &&
+                ny >= 0 && ny < pixelsContext->pixelsHeight) {
+                int index = ny * pixelsContext->pixelsWidth + nx;
                 pixelsContext->pixels[index] = color;
             }
         }

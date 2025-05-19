@@ -3,9 +3,9 @@
 
 void coCroisées (PIXELS_Context *pixelsContext) {
 
-    for (int y = 0; y < pixelsContext->height; y++) {
-        for (int x = 0; x < pixelsContext->width; x++) {
-            int i = y * pixelsContext->width + x;
+    for (int y = 0; y < pixelsContext->pixelsHeight; y++) {
+        for (int x = 0; x < pixelsContext->pixelsWidth; x++) {
+            int i = y * pixelsContext->pixelsWidth + x;
             //Coordonnées croisées
             if ((((x * x + y * x) % 128) < 64)) {
                 pixelsContext->pixels[i]  = 0xFFFFFFFF;

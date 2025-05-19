@@ -3,13 +3,13 @@
 
 void cropCircleNoMv (PIXELS_Context *pixelsContext) {
 
-    unsigned short circlePosX = pixelsContext->width / 2;
-    unsigned short circlePosY = pixelsContext->height / 2;
+    unsigned short circlePosX = pixelsContext->pixelsWidth / 2;
+    unsigned short circlePosY = pixelsContext->pixelsHeight / 2;
 
-    for (int y = 0; y < pixelsContext->height; y++) {
-        for (int x = 0; x < pixelsContext->width; x++) {
+    for (int y = 0; y < pixelsContext->pixelsHeight; y++) {
+        for (int x = 0; x < pixelsContext->pixelsWidth; x++) {
 
-            int i = y * pixelsContext->width + x;
+            int i = y * pixelsContext->pixelsWidth + x;
 
             int dx = x - circlePosX;
             int dy = y - circlePosY ;

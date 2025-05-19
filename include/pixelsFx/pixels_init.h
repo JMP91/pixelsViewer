@@ -4,8 +4,8 @@
 #include "sdl/sdl_init.h"
 
 typedef struct PIXELS_Context {
-    int width;
-    int height;
+    int pixelsWidth;
+    int pixelsHeight;
     Uint32 color; 
     Uint32 *pixels;
 } PIXELS_Context;

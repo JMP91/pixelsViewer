@@ -19,7 +19,7 @@ avec un **noyau minimal**.
 ## Philosophie
 
 -  Tous les calcules sont stockés dans un mask et manipulés directement
-   dans des **tableaux de type `uint8 et recopié dans un tab Uint32  
+   dans des **tableaux de type `uint8 et recopié dans un tab Uint32(pixels) 
 -  SDL est utilisé uniquement comme **interface de sortie vidéo**.
    en texture stream 
 
