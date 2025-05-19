@@ -11,6 +11,7 @@
 #include "pixelsFx/pixelsMaskSrc_init.h"
 
 int main(void) {
+
     SDL_Context *sdlContext = initSDL(800, 800);
     if (!sdlContext) return -1;
 
@@ -38,7 +39,9 @@ int main(void) {
 
         if (elapsedTime >= 41) {        
         SDL_RenderClear(sdlContext->renderer);
+      
         tabChoice(pixelsContext);
+
         renderTexture(textureContext, sdlContext->renderer, pixelsContext);
         SDL_RenderPresent(sdlContext->renderer);
         lastFrameDisplay = SDL_GetTicks();

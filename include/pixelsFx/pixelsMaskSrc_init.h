@@ -3,16 +3,16 @@
 
 
 typedef struct PIXELSMASKSRC_Context {
-    int width;
-    int height;
-    uint8_t *mask;
+    int widthSrc;
+    int heightSrc;
+    uint8_t *maskSrc;
 } PIXELSMASKSRC_Context;
 
 PIXELSMASKSRC_Context *pixelsMaskSrcContext_init(SDL_Context *sdlContext);
 
-void cleanupPixelsMask(PIXELSMASKSRC_Context *pixelsMaskSrcContext);
+void cleanupPixelsMaskSrc(PIXELSMASKSRC_Context *pixelsMaskSrcContext);
 
 PIXELSMASKSRC_Context *pixelsSrcMaskContext_refresh (
-                                      PIXELSMASKSRC_Context *pixelsMaskContext,
-                                      SDL_Context *sdlContext);
+                                  PIXELSMASKSRC_Context *pixelsMaskSrcContext,
+                                  SDL_Context *sdlContext);
 #endif 
