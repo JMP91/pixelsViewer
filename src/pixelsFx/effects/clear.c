@@ -1,4 +1,3 @@
-#include "pixelsFx/pixelsMaskSrc_init.h"
 #include "pixelsFx/pixelsFx.h"
 
 void effect_clear(PIXELS_Context *pixelsContext) {

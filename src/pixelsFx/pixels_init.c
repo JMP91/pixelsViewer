@@ -4,38 +4,43 @@
 #include "pixelsFx/pixels_init.h"
 
 PIXELS_Context *pixelsContext_init(SDL_Context *sdlContext) {
-
     PIXELS_Context *pixelsContext = malloc(sizeof(PIXELS_Context));
     if (!pixelsContext) {
         fprintf(stderr, "Erreur allocation PIXELS_Context\n");
         return NULL;
     }
 
-    int windowWidth, windowHeight;                                              
-    SDL_GetRendererOutputSize(sdlContext->renderer,                             
-                            &windowWidth, &windowHeight);      
+    int windowWidth, windowHeight;
     if (SDL_GetRendererOutputSize(sdlContext->renderer,
-                                        &windowWidth, &windowHeight) != 0) {
-        fprintf(stderr, "Erreur SDL_GetRendererOutputSize : %s\n",
-                                                            SDL_GetError());
+                                &windowWidth, &windowHeight) != 0) {
+        fprintf(stderr, "Er SDL_GetRendererOutputSize : %s\n", SDL_GetError());
         free(pixelsContext);
         return NULL;
     }
 
     pixelsContext->pixelsWidth = windowWidth;
     pixelsContext->pixelsHeight = windowHeight;
-    pixelsContext->pixels = malloc(windowWidth * windowHeight
-                                                        * sizeof(uint32_t));
-    if (!pixelsContext->pixels) {
-      fprintf(stderr, "Erreur : allocation du tableau de pixels échouée\n");
-        free(pixelsContext);
+
+    int total = windowWidth * windowHeight;
+
+    pixelsContext->pixels = malloc(total * sizeof(Uint32));
+    pixelsContext->stateMap = malloc(total * sizeof(Uint8));
+    pixelsContext->maskDest = malloc(total * sizeof(Uint8));
+    pixelsContext->maskSrc = malloc(total * sizeof(Uint8));
+
+    if (!pixelsContext->pixels 
+                        || !pixelsContext->stateMap 
+                        || !pixelsContext->maskDest 
+                        || !pixelsContext->maskSrc) {
+        fprintf(stderr, "Erreur allocation des tableaux du contexte\n");
+        cleanupPixels(pixelsContext); // free tout proprement
         return NULL;
     }
-   
-    pixelsContext->color = 0x00000000;
 
-    for (int i = 0; i < windowWidth * windowHeight; i++) {
-        pixelsContext->pixels[i] = 0;
+    for (int i = 0; i < total; i++) {
+        pixelsContext->stateMap[i] = 0;
+        pixelsContext->maskDest[i] = 0;
+        pixelsContext->maskSrc[i] = 0;
     }
 
     return pixelsContext;
@@ -43,10 +48,10 @@ PIXELS_Context *pixelsContext_init(SDL_Context *sdlContext) {
 
 void cleanupPixels(PIXELS_Context *pixelsContext) {
     if (!pixelsContext) return;
-
-    if (pixelsContext->pixels) {
-        free(pixelsContext->pixels);
-    }
+    free(pixelsContext->pixels);
+    free(pixelsContext->stateMap);
+    free(pixelsContext->maskDest);
+    free(pixelsContext->maskSrc);
     free(pixelsContext);
 }
 
