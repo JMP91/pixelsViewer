@@ -6,6 +6,6 @@ void effect_clear(PIXELS_Context *pixelsContext) {
                                 pixelsWidth * pixelsContext->pixelsHeight;
 
     for (int i = 0; i < total; i++) {
-        pixelsContext->pixels[i] = 0x00000000; 
+        pixelsContext->pixels[i] = 0xFFFFFFFF; 
     }
 }

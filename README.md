@@ -1,7 +1,7 @@
 # PixelViewer
 
-Projet expérimental en C utilisant **SDL2** pour explorer le rendu de **pixels
-via des tableaux mémoire**, sans aucun calcul complexe par GPU.
+Projet expérimental en C utilisant SDL2 pour explorer le rendu de pixels
+via des tableaux mémoire, sans aucun calcul complexe par GPU.
 
 ---
 
@@ -12,14 +12,14 @@ Afficher et manipuler des pixels dans un espace vidéo SDL, en vue de créer des
 graphiques avancées.
 
 Ce projet sert de **prototype graphique** pour un futur système plus bas niveau
-avec un **noyau minimal**.
+avec un noyau minimal
 
 ---
 
 ## Philosophie
 
 -  Tous les calcules sont stockés dans un mask et manipulés directement
-   dans des **tableaux de type `uint8 et recopié dans un tab Uint32(pixels) 
+   dans des tableaux de type `uint8 et recopié dans un tab Uint32(pixels) 
 -  SDL est utilisé uniquement comme **interface de sortie vidéo**.
    en texture stream 
 

@@ -6,6 +6,7 @@
 typedef struct PIXELS_Context {
     int pixelsWidth;
     int pixelsHeight;
+    int total;
     Uint32 color; 
     Uint32 *pixels;
     Uint8 *stateMap;

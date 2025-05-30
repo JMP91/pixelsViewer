@@ -13,7 +13,7 @@ SRCS = $(shell find $(SRC_DIR) -type f -name "*.c")
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRCS))
 
 # === Nom de l'exécutable ===
-TARGET = pixMoteur
+TARGET = pixelsViewer 
 
 # === Flags compilation (warnings, includes, récursifs) ===
 INCLUDE_PATHS = $(shell find $(INCLUDE_DIR) -type d)

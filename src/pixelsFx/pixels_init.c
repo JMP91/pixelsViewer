@@ -21,26 +21,26 @@ PIXELS_Context *pixelsContext_init(SDL_Context *sdlContext) {
     pixelsContext->pixelsWidth = windowWidth;
     pixelsContext->pixelsHeight = windowHeight;
 
-    int total = windowWidth * windowHeight;
+    pixelsContext->total = windowWidth * windowHeight;
 
-    pixelsContext->pixels = malloc(total * sizeof(Uint32));
-    pixelsContext->stateMap = malloc(total * sizeof(Uint8));
-    pixelsContext->maskDest = malloc(total * sizeof(Uint8));
-    pixelsContext->maskSrc = malloc(total * sizeof(Uint8));
+    pixelsContext->pixels = malloc(pixelsContext->total * sizeof(Uint32));
+    pixelsContext->stateMap = malloc(pixelsContext->total * sizeof(Uint8));
+    pixelsContext->maskDest = malloc(pixelsContext->total * sizeof(Uint8));
+    pixelsContext->maskSrc = malloc(pixelsContext->total * sizeof(Uint8));
 
-    if (!pixelsContext->pixels 
-                        || !pixelsContext->stateMap 
-                        || !pixelsContext->maskDest 
-                        || !pixelsContext->maskSrc) {
+    if (!pixelsContext->pixels || !pixelsContext->stateMap 
+                               || !pixelsContext->maskDest 
+                               || !pixelsContext->maskSrc) {
         fprintf(stderr, "Erreur allocation des tableaux du contexte\n");
         cleanupPixels(pixelsContext); // free tout proprement
         return NULL;
     }
 
-    for (int i = 0; i < total; i++) {
+    for (int i = 0; i < pixelsContext->total; i++) {
         pixelsContext->stateMap[i] = 0;
         pixelsContext->maskDest[i] = 0;
         pixelsContext->maskSrc[i] = 0;
+        pixelsContext->pixels[i] = 0xFFFFFFFF;
     }
 
     return pixelsContext;

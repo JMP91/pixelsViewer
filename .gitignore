@@ -3,6 +3,9 @@ build/
 *.o
 *.out
 
+#fichiers divers
+toDo.txt
+
 # Fichiers temporaires / système
 *.log
 *.swp
