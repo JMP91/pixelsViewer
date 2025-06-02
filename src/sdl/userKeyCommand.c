@@ -24,7 +24,7 @@ void userKeyCommand (SDL_Context *sdlContext,
                     tabChoice = cropCircleNoMv;
                     break;
                 case SDLK_t:
-                    tabChoice = effect_test;
+                    // faire un test fx si tu veux . 
                     break;
 
                 case SDLK_SPACE:

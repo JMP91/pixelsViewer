@@ -3,24 +3,24 @@
 
 #include <SDL2/SDL.h>
 #include "pixels_init.h"
-
+#include "core/utils.h"
 
 typedef struct {
-    int *blackStateIndices;
-    int *blackDestIndices; // indices dans les buffers binaires (pas pixels)
-    int nbrBlackPixelsDestCount;
+    Uint32 *blackStateIndices;
+    Uint32 *blackDestIndices; // indices buffers binaires (pas pixels)
+    Uint32 nbrBlackPixelsDestCount;
 } MASK_Context;
 
 void pixelsMask_fillDest(PIXELS_Context *pixelsContext);
 
-int  pixelsMask_countBlack(MASK_Context *maskContext,
+Uint32  pixelsMask_countBlack(MASK_Context *maskContext,
                             PIXELS_Context *pixelsContext);
 
-void pixelsMask_copyDestToState(PIXELS_Context *pixelsContext);
+void pixelsMask_fillBlackDestIndices (MASK_Context *maskContext,
+                                        PIXELS_Context *pixelsContext);
 
-void pixelsMask_stateToPixels(PIXELS_Context *pixelsContext);
+void pixelsMask_fillBlackStateIndices (MASK_Context *maskContext,
+                                        PIXELS_Context *pixelsContext);
 
-// Fonction “master” qui orchestre tout
-void pixelsMask_renderBinaire(PIXELS_Context *pixelsContext);
 
 #endif

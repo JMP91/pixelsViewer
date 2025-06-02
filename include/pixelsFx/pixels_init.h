@@ -4,9 +4,9 @@
 #include "sdl/sdl_init.h"
 
 typedef struct PIXELS_Context {
-    int pixelsWidth;
-    int pixelsHeight;
-    int total;
+    Uint32 pixelsWidth;
+    Uint32 pixelsHeight;
+    Uint32 total;
     Uint32 color; 
     Uint32 *pixels;
     Uint8 *stateMap;
@@ -15,7 +15,8 @@ typedef struct PIXELS_Context {
 } PIXELS_Context;
 
 PIXELS_Context *pixelsContext_init(SDL_Context *sdlContext);
-void cleanupPixels(PIXELS_Context *pixelsContext_init);
+
+void cleanupPixels(PIXELS_Context *pixelsContext);
 
 PIXELS_Context *pixelsContext_refresh (PIXELS_Context *pixelsContext,
                                                     SDL_Context *sdlContext);

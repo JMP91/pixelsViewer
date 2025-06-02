@@ -1,5 +1,6 @@
 # Build et binaires
 build/
+pixelsViewer
 *.o
 *.out
 
